@@ -1,0 +1,147 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="wxaccessi.dun.com.wxaccessi">
+
+    <!-- 模拟定位相关 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION"/>
+
+    <!-- 创建悬浮窗口-->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <!-- 创建ACCESSIBILITY 服务-->
+    <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- 修改系统设置 -->
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+
+    <!-- 解锁屏幕相关 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <service
+            android:name=".RobotService"
+            android:enabled="true"
+            android:exported="true"
+            android:label="微信定点加粉"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/envelope_service_config"/>
+        </service>
+
+        <service
+            android:name=".WXaccessibilityService.weiCahtMessService"
+            android:enabled="true"
+            android:exported="true"
+            android:label="微信群自动发信息"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/envelope_service_config"/>
+        </service>
+
+        <service
+            android:name=".WXaccessibilityService.weiCahtAddFriendsService"
+            android:enabled="true"
+            android:exported="true"
+            android:label="微信群加好友"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/envelope_service_config"/>
+        </service>
+
+        <service
+            android:name=".WXaccessibilityService.weiCahtAutoReplyService"
+            android:enabled="true"
+            android:exported="true"
+            android:label="微信自动回复"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/envelope_service_config"/>
+        </service>
+
+        <service
+            android:name=".WXaccessibilityService.WeChatFriendsCircleService"
+            android:enabled="true"
+            android:exported="true"
+            android:label="微信自动通过好友验证"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/envelope_service_config"/>
+        </service>
+
+        <service
+            android:name=".WXaccessibilityService.weiCahtFriendsMessService"
+            android:enabled="true"
+            android:exported="true"
+            android:label="微信好友群发消息"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/envelope_service_config"/>
+        </service>
+
+        <service
+            android:name=".WXaccessibilityService.WeiChatBoomFriendsService"
+            android:enabled="true"
+            android:exported="true"
+            android:label="微信通讯录爆粉"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/envelope_service_config"/>
+        </service>
+
+        <service
+            android:name=".WXstarts"
+            android:enabled="true"
+            android:exported="true">
+        </service>
+
+        <activity
+            android:name=".StartActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden"
+            >
+        </activity>
+        <receiver android:name=".Alarm.AlarmReceiver" >
+        </receiver>
+
+    </application>
+
+</manifest>
